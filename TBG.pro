@@ -20,5 +20,4 @@ HEADERS  += mainwindow.h
 FORMS    += mainwindow.ui
 
 RESOURCES += \
-    images.qrc \
-    nyu.qrc
+    images.qrc
