@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    pilgrim.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    pilgrim.h
 
 FORMS    += mainwindow.ui
 
