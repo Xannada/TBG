@@ -8,7 +8,11 @@ struct Gun{
     int ammo;
     int damage;
     bool have;
+    void shoot();
 };
+Gun::shoot(){
+    ammo--;
+}
 
 struct melee{
     bool have;
