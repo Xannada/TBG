@@ -10,7 +10,7 @@ struct Gun{
     bool have;
     void shoot();
 };
-Gun::shoot(){
+void Gun::shoot(){
     ammo--;
 }
 
