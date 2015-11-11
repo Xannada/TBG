@@ -8,11 +8,9 @@ struct Gun{
     int ammo;
     int damage;
     bool have;
-    void shoot();
+    void shoot(){ammo--;}
 };
-void Gun::shoot(){
-    ammo--;
-}
+
 
 struct melee{
     bool have;
@@ -24,6 +22,12 @@ class Pilgrim
 {
 public:
     Pilgrim();
+    ~Pilgrim();
+    void findKnife();
+    void findHatchet();
+    void findBayonet();
+    void findMusket();
+    void findFlintlock();
 private:
     int hp;
     int maxhp;

@@ -33,3 +33,28 @@ Pilgrim::Pilgrim()
     bayonet.numberOfAttacks = 1;
 }
 
+Pilgrim::~Pilgrim(){}
+
+void Pilgrim::findKnife(){
+    knife.have = true;
+}
+
+void Pilgrim::findHatchet(){
+    hatchet.have = true;
+}
+
+void Pilgrim::findBayonet(){
+
+}
+
+void Pilgrim::findMusket(){
+    bayonet.have = true;
+    if(musket.have)
+        musket.hasbayonet = true;
+}
+
+void Pilgrim::findFlintlock(){
+    flintlock.have = true;
+}
+
+

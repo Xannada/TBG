@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->HPBar->setValue(100-10);
 }
 
 MainWindow::~MainWindow()
