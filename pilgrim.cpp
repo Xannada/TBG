@@ -57,4 +57,31 @@ void Pilgrim::findFlintlock(){
     flintlock.have = true;
 }
 
+QString Pilgrim::rangeWeapon(){
+    QString name = "No range weapon.";
+    if(flintlock.have){
+        name = "Flintlock pistol.";
+    }
+    else if (musket.have){
+        name = "Musket";
+        if(musket.hasbayonet){
+            name += " with bayonet.";
+        }
+    }
+    return name;
+}
+
+int Pilgrim::rangeAttack(){
+    int damage = 0;
+    if(musket.have){
+        damage += musket.damage;
+        if(bayonet.have){
+            damage += bayonet.damage;
+        }
+    }
+    else if (flintlock.have){
+        damage += flintlock.damage;
+    }
+    return damage;
+}
 

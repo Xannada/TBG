@@ -1,6 +1,8 @@
 #ifndef PILGRIM_H
 #define PILGRIM_H
 
+#include <QString>
+
 
 struct Gun{
     bool canHaveBayonet;
@@ -28,6 +30,11 @@ public:
     void findBayonet();
     void findMusket();
     void findFlintlock();
+
+    QString rangeWeapon();
+    int rangeAttack();
+
+
 private:
     int hp;
     int maxhp;
