@@ -2,6 +2,7 @@
 #define PILGRIM_H
 
 #include <QString>
+#include <QTextStream>
 
 
 struct Gun{
@@ -32,7 +33,7 @@ public:
     void findFlintlock();
 
     QString rangeWeapon();
-    int rangeAttack();
+    int rangeAttack(QString& s);
 
 
 private:

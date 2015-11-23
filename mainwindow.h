@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "pilgrim.h"
+using namespace std;
 
 namespace Ui {
 class MainWindow;

@@ -71,17 +71,26 @@ QString Pilgrim::rangeWeapon(){
     return name;
 }
 
-int Pilgrim::rangeAttack(){
+int Pilgrim::rangeAttack(QString &s){
+    QTextStream sss;
     int damage = 0;
     if(musket.have){
         damage += musket.damage;
+        sss << "Your musket does " << damage << " damage";
         if(bayonet.have){
             damage += bayonet.damage;
+            sss << " and your bayonet adds " << bayonet.damage << " damage";
         }
     }
     else if (flintlock.have){
         damage += flintlock.damage;
+        sss << "Your flintlock pistol does " << damage << " damage";
     }
+    else{
+        sss << "";
+    }
+    s = *(sss.string());
+
     return damage;
 }
 

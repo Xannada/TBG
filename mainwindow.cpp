@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->HPBar->setValue(100-10);
+    QString test;
+    player.rangeAttack(test);
+    ui->PDisplay->setText(test);
 }
 
 MainWindow::~MainWindow()
