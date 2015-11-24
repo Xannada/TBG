@@ -7,6 +7,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->HPBar->setValue(100);
+    ui->DownArrow->setHidden(true);
+    ui->DownLabel->setHidden(true);
+
+
+//    pic.load(":/pics/images/arrowLeft.png");
+//    ui->PDisplay->setPixmap(pic);
+//    ui->PDisplay->clear();
+
+
     QString test;
 //    player.findMusket();
 //    player.findBayonet();
@@ -19,7 +28,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QString MainWindow::rollReward(){
+void MainWindow::rollReward(){
     int roll;
     roll = qrand() % 100 + 1;
     QString s;
@@ -34,7 +43,7 @@ QString MainWindow::rollReward(){
     else if( roll > 5){player.accUp(); s = "Your hunting has improved your aim, bonus damage with guns!";}
     else {player.atkUp(); s = "Your hunting has improved your combat skill, you attack more times!";}
 
-    return s;
+    ui->description->setText(s);
 }
 
 void MainWindow::updateHealth(){
@@ -100,4 +109,104 @@ void MainWindow::nextMonster(){
     default: //witch
         break;
     }
+
+    setCombat();;
+}
+
+void MainWindow::setCombat(){
+    //disable movement
+    ui->UpArrow->setEnabled(false);
+    ui->UpLabel->setEnabled(false);
+    ui->RightArrow->setEnabled(false);
+    ui->RightLabel->setEnabled(false);
+    ui->LeftArrow->setEnabled(false);
+    ui->LeftLabel->setEnabled(false);
+
+    //enable actions
+    ui->rangeButton->setText(player.rangeWeapon());
+    ui->meleeButton->setText(player.meleeWeapon());
+    if(player.rangeWeapon() != "No ranged weapon")
+     ui->rangeButton->setEnabled(true);
+    if(player.meleeWeapon() != "No melee weapon")
+        ui->meleeButton->setEnabled(true);
+    ui->bitchout->setEnabled(true);
+    ui->noactions->setHidden(true);
+
+    //set pic
+    pic.scaledToHeight(ui->PDisplay->height());
+    if(pic.width() > ui->PDisplay->width()){
+        pic.scaledToWidth(ui->PDisplay->width());
+    }
+    ui->PDisplay->setPixmap(pic);
+
+}
+
+void MainWindow::exitCombat(){
+    //enable movement
+    ui->UpArrow->setEnabled(true);
+    ui->UpLabel->setEnabled(true);
+    ui->RightArrow->setEnabled(true);
+    ui->RightLabel->setEnabled(true);
+    ui->LeftArrow->setEnabled(true);
+    ui->LeftLabel->setEnabled(true);
+
+    //disable actions
+    ui->rangeButton->setEnabled(false);
+    ui->bitchout->setEnabled(false);
+    ui->meleeButton->setEnabled(false);
+    ui->noactions->setHidden(false);
+
+    //clear pic
+    ui->PDisplay->clear();
+    player.hpUp();
+    updateHealth();
+}
+
+void MainWindow::on_UpArrow_clicked()
+{
+    findNextThing();
+    GameOver();
+}
+
+void MainWindow::on_bitchout_clicked()
+{
+    int roll = qrand() % 5;
+
+    if(roll == 0){
+        ui->description->setText("You try to run away...\n\nYou get away!");
+        exitCombat();
+    }
+    else{
+        QString temp;
+        desc = "You try to run away...\n\nCan't Escape!\n\nThe " + enemy.getName()
+                + " " + enemy.atkDes() + " for "
+                + temp.setNum(enemy.attack()) + " damage";
+        player.takedamage(enemy.attack());
+        ui->description->setText(desc);
+    }
+}
+
+void MainWindow::on_meleeButton_clicked()
+{
+   if(enemy.takeDamage(player.meleeAttack(desc))){
+       QString temp;
+       desc += "\n\nThe " + enemy.getName() + " is still alive\n\n"
+            + "It " + enemy.atkDes() + " for " + temp.setNum(enemy.attack()) + " damage";
+       player.takedamage(enemy.attack());
+   }
+   else{
+       desc += "\n\nYou have killed the " + enemy.getName();
+       exitCombat();
+   }
+   ui->description->setText(desc);
+}
+
+void MainWindow::on_rangeButton_clicked()
+{
+
+}
+
+void MainWindow::GameOver(){
+    QMessageBox::critical(this,"Game Over","You have died!",QMessageBox::Ok);
+    QApplication::quit();
 }

@@ -20,6 +20,11 @@ struct melee{
     int numberOfAttacks;
 };
 
+//struct consumable{
+//    bool have;
+//    void use(){have = false;}
+//};
+
 class Pilgrim
 {
 public:

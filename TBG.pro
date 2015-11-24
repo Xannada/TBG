@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    pilgrim.cpp
+    pilgrim.cpp \
+    encounter.cpp
 
 HEADERS  += mainwindow.h \
-    pilgrim.h
+    pilgrim.h \
+    encounter.h
 
 FORMS    += mainwindow.ui
 

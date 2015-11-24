@@ -33,7 +33,7 @@ Pilgrim::Pilgrim()
     hatchet.damage = 6;
     hatchet.numberOfAttacks = 1;
 
-    bayonet.have = false;
+    bayonet.have = true;
     bayonet.damage = 2;
     bayonet.numberOfAttacks = 1;
 
@@ -64,7 +64,7 @@ int Pilgrim::getHp(){
 }
 
 int Pilgrim::getMaxHp(){
-    return maxHp;
+    return maxhp;
 }
 
 /*********************************************************************************
@@ -132,7 +132,7 @@ void Pilgrim::maxUp(){
 **********************************************************************************/
 
 QString Pilgrim::rangeWeapon(){
-    QString name = "No range weapon";
+    QString name = "No ranged weapon";
     if(flintlock.have){
         name = "Flintlock pistol";
     }
