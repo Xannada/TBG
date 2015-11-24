@@ -392,18 +392,93 @@
      <pixmap resource="images.qrc">:/pics/images/arrowDown.png</pixmap>
     </property>
    </widget>
-   <widget class="QProgressBar" name="HPBar">
+   <widget class="QLabel" name="testlabel">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>290</y>
-      <width>118</width>
-      <height>23</height>
+      <x>300</x>
+      <y>410</y>
+      <width>451</width>
+      <height>16</height>
      </rect>
     </property>
-    <property name="value">
-     <number>83</number>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>300</y>
+      <width>104</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="HpGroup">
+     <item>
+      <layout class="QHBoxLayout" name="HpTextGroup">
+       <item>
+        <widget class="QLabel" name="Health">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>25</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>25</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>HP: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="healthValue">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="healthSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QProgressBar" name="HPBar">
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="value">
+        <number>83</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
    <zorder>UpLabel</zorder>
    <zorder>RightLabel</zorder>
@@ -417,6 +492,9 @@
    <zorder>LeftArrow</zorder>
    <zorder>RightArrow</zorder>
    <zorder>HPBar</zorder>
+   <zorder>testlabel</zorder>
+   <zorder>Health</zorder>
+   <zorder>healthValue</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

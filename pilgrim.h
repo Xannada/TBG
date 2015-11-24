@@ -2,7 +2,6 @@
 #define PILGRIM_H
 
 #include <QString>
-#include <QTextStream>
 
 
 struct Gun{
@@ -11,7 +10,7 @@ struct Gun{
     int ammo;
     int damage;
     bool have;
-    void shoot(){ammo--;}
+    bool shoot(){return (ammo > 0)?ammo--:false;}
 };
 
 
@@ -24,30 +23,58 @@ struct melee{
 class Pilgrim
 {
 public:
+    // con decon
     Pilgrim();
     ~Pilgrim();
+
+    //life methods
+    int getHpBar();
+    QString health();
+    int getHp();
+    int getMaxHp();
+
+    //reward updaters
     void findKnife();
     void findHatchet();
     void findBayonet();
     void findMusket();
     void findFlintlock();
+    void findAmmoBag();
+    void atkUp();
+    void accUp();
+    void hpUp(int upby = 0);
+    void maxUp();
 
+
+    //combat
     QString rangeWeapon();
     int rangeAttack(QString& s);
+    QString meleeWeapon();
+    int meleeAttack(QString& s);
+    bool takedamage(int dmg);
 
 
 private:
+    //life
     int hp;
     int maxhp;
 
+    //score base
     int kills;
     int turkeys;
+    int indians;
+    int bears;
 
+    //weapons
     Gun musket;
     Gun flintlock;
     melee knife;
     melee hatchet;
     melee bayonet;
+
+    //bonuses
+    int bonusAttacks;
+    int accuracyBonus;
 };
 
 #endif // PILGRIM_H

@@ -2,12 +2,17 @@
 
 Pilgrim::Pilgrim()
 {
+    //life
     hp = 10;
     maxhp = 10;
 
+    //score base
     kills = 0;
     turkeys = 0;
+    indians = 0;
+    bears = 0;
 
+    //weapons
     musket.ammo = 0;
     musket.canHaveBayonet = true;
     musket.damage = 10;
@@ -31,9 +36,42 @@ Pilgrim::Pilgrim()
     bayonet.have = false;
     bayonet.damage = 2;
     bayonet.numberOfAttacks = 1;
+
+    //bonuses
+    bonusAttacks = 0;
+    accuracyBonus = 1;
 }
 
 Pilgrim::~Pilgrim(){}
+
+/*********************************************************************************
+ *
+ * Life methods
+ *
+**********************************************************************************/
+
+int Pilgrim::getHpBar(){
+    return int((float(hp)/maxhp)*100);
+}
+
+QString Pilgrim::health(){
+    QString s;
+    return s.setNum(hp) + "/" + s.setNum(maxhp);
+}
+
+int Pilgrim::getHp(){
+    return hp;
+}
+
+int Pilgrim::getMaxHp(){
+    return maxHp;
+}
+
+/*********************************************************************************
+ *
+ * Reward methods
+ *
+**********************************************************************************/
 
 void Pilgrim::findKnife(){
     knife.have = true;
@@ -44,53 +82,134 @@ void Pilgrim::findHatchet(){
 }
 
 void Pilgrim::findBayonet(){
-
-}
-
-void Pilgrim::findMusket(){
     bayonet.have = true;
     if(musket.have)
         musket.hasbayonet = true;
 }
 
-void Pilgrim::findFlintlock(){
-    flintlock.have = true;
+void Pilgrim::findMusket(){
+    musket.have = true;
+    musket.ammo += 10;
+    if(bayonet.have)
+        musket.hasbayonet = true;
 }
 
+void Pilgrim::findFlintlock(){
+    flintlock.have = true;
+    flintlock.ammo += 10;
+}
+
+void Pilgrim::findAmmoBag(){
+    flintlock.ammo += 5;
+    musket.ammo += 5;
+}
+
+void Pilgrim::atkUp(){
+    bonusAttacks++;
+}
+
+void Pilgrim::accUp(){
+    accuracyBonus++;
+}
+
+void Pilgrim::hpUp(int upby){
+    if(upby == 0)
+        upby = int(maxhp * .1);
+    hp += upby;
+    if(hp > maxhp)
+        hp = maxhp;
+}
+
+void Pilgrim::maxUp(){
+    maxhp += 5;
+    hp +=5;
+}
+
+/*********************************************************************************
+ *
+ * Combat methods
+ *
+**********************************************************************************/
+
 QString Pilgrim::rangeWeapon(){
-    QString name = "No range weapon.";
+    QString name = "No range weapon";
     if(flintlock.have){
-        name = "Flintlock pistol.";
+        name = "Flintlock pistol";
     }
     else if (musket.have){
         name = "Musket";
         if(musket.hasbayonet){
-            name += " with bayonet.";
+            name += " with bayonet";
         }
     }
     return name;
 }
 
 int Pilgrim::rangeAttack(QString &s){
-    QTextStream sss;
     int damage = 0;
-    if(musket.have){
-        damage += musket.damage;
-        sss << "Your musket does " << damage << " damage";
+    QString temp;
+    if(musket.have && musket.shoot()){
+        damage = musket.damage * accuracyBonus;
+        temp.setNum(damage);
+        s = "Your musket does " + temp + " damage";
         if(bayonet.have){
-            damage += bayonet.damage;
-            sss << " and your bayonet adds " << bayonet.damage << " damage";
+            damage += bayonet.damage * (bayonet.numberOfAttacks + bonusAttacks);
+            temp.setNum(bayonet.damage);
+            s += " and your bayonet adds " + temp + " damage";
         }
     }
-    else if (flintlock.have){
-        damage += flintlock.damage;
-        sss << "Your flintlock pistol does " << damage << " damage";
+    else if (flintlock.have && flintlock.shoot()){
+        damage = flintlock.damage * accuracyBonus;
+        temp.setNum(damage);
+        s = "Your flintlock pistol does " + temp + " damage";
     }
     else{
-        sss << "";
+        s = "No range weapon";
     }
-    s = *(sss.string());
 
     return damage;
 }
 
+QString Pilgrim::meleeWeapon(){
+    QString name = "No melee weapon";
+    if(hatchet.have){
+        name = "Hatchet";
+    }
+    else if (knife.have){
+        name = "Knife";
+    }
+    else if(bayonet.have){
+        name = "Bayonet";
+    }
+    return name;
+}
+
+int Pilgrim::meleeAttack(QString &s){
+    int damage = 0;
+    QString temp;
+    if(hatchet.have){
+        damage = hatchet.damage * (hatchet.numberOfAttacks + bonusAttacks);
+        temp.setNum(damage);
+        s = "Your hatchet does " + temp + " damage";
+    }
+    else if (knife.have){
+        damage = knife.damage * (knife.numberOfAttacks + bonusAttacks);
+        temp.setNum(damage);
+        s = "Your knife does " + temp + " damage";
+    }
+    else if (bayonet.have){
+        damage = bayonet.damage * (bayonet.numberOfAttacks + bonusAttacks);
+        temp.setNum(damage);
+        s = "Your knife does " + temp + " damage";
+    }
+    else{
+        s = "No melee weapon";
+    }
+
+    return damage;
+}
+
+bool Pilgrim::takedamage(int dmg){
+    hp -= dmg;
+    return hp > 0;
+}
