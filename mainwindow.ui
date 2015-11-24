@@ -214,7 +214,7 @@
        </font>
       </property>
       <property name="text">
-       <string>no melee</string>
+       <string>Bayonet</string>
       </property>
       <property name="flat">
        <bool>true</bool>
@@ -301,7 +301,7 @@
        </font>
       </property>
       <property name="text">
-       <string>no range</string>
+       <string>No ranged weapon</string>
       </property>
       <property name="flat">
        <bool>true</bool>
@@ -730,12 +730,6 @@
    <zorder>RightArrow</zorder>
    <zorder>testlabel</zorder>
    <zorder>description</zorder>
-   <zorder>inventory</zorder>
-   <zorder>rangeButton</zorder>
-   <zorder>noactions</zorder>
-   <zorder>meleeButton</zorder>
-   <zorder>bitchout</zorder>
-   <zorder>actionslabel</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -761,38 +755,5 @@
  <resources>
   <include location="images.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>RightArrow</sender>
-   <signal>clicked()</signal>
-   <receiver>UpArrow</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>703</x>
-     <y>383</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>635</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>LeftArrow</sender>
-   <signal>clicked()</signal>
-   <receiver>UpArrow</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>534</x>
-     <y>378</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>576</x>
-     <y>326</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

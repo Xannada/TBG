@@ -18,11 +18,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void rollReward();
+    QString rollReward();
     void updateHealth();
     void findNextThing();
     void nextAnimal();
-    void nextIndian();
+//    void nextIndian();
     void nextScenery();
     void nextMonster();
     void setCombat();
@@ -37,6 +37,10 @@ private slots:
     void on_meleeButton_clicked();
 
     void on_rangeButton_clicked();
+
+    void on_LeftArrow_clicked();
+
+    void on_RightArrow_clicked();
 
 private:
     Ui::MainWindow *ui;

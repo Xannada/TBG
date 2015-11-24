@@ -125,6 +125,14 @@ void Pilgrim::maxUp(){
     hp +=5;
 }
 
+void Pilgrim::kill(){
+    kills++;
+}
+
+int Pilgrim::getKills(){
+    return kills;
+}
+
 /*********************************************************************************
  *
  * Combat methods
