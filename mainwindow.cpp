@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->meleeButton->setEnabled(false);
     ui->rangeButton->setEnabled(false);
     ui->bitchout->setEnabled(false);
-    pic.load(":/pics/images/hh.jpg");
-    ui->PDisplay->setPixmap(pic);
 }
 
 MainWindow::~MainWindow()
