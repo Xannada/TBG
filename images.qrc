@@ -5,7 +5,6 @@
         <file>images/arrowLeft.png</file>
         <file>images/arrowRight.png</file>
         <file>images/Turkey.png</file>
-        <file>images/hh.jpg</file>
         <file>images/4way.jpg</file>
         <file>images/bear.png</file>
         <file>images/bigfoot.png</file>
@@ -18,5 +17,6 @@
         <file>images/Wolf.png</file>
         <file>images/zombie.png</file>
         <file>images/path.jpg</file>
+        <file>images/hh.jpg</file>
     </qresource>
 </RCC>

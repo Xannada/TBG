@@ -56,7 +56,8 @@ int Pilgrim::getHpBar(){
 
 QString Pilgrim::health(){
     QString s;
-    return s.setNum(hp) + "/" + s.setNum(maxhp);
+    QString t;
+    return s.setNum(hp) + "/" + t.setNum(maxhp);
 }
 
 int Pilgrim::getHp(){
@@ -129,8 +130,9 @@ void Pilgrim::kill(){
     kills++;
 }
 
-int Pilgrim::getKills(){
-    return kills;
+QString Pilgrim::getKills(){
+    QString s;
+    return s.setNum(kills);
 }
 
 /*********************************************************************************
@@ -141,14 +143,14 @@ int Pilgrim::getKills(){
 
 QString Pilgrim::rangeWeapon(){
     QString name = "No ranged weapon";
-    if(flintlock.have){
-        name = "Flintlock pistol";
-    }
-    else if (musket.have){
+    if (musket.have){
         name = "Musket";
         if(musket.hasbayonet){
             name += " with bayonet";
         }
+    }
+    else if(flintlock.have){
+        name = "Flintlock pistol";
     }
     return name;
 }

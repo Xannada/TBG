@@ -50,7 +50,7 @@ public:
     void hpUp(int upby = 0);
     void maxUp();
     void kill();
-    int getKills();
+    QString getKills();
 
 
     //combat

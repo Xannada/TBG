@@ -96,7 +96,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>TBG</string>
+   <string>Pilgrim</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -106,7 +106,7 @@
     <property name="geometry">
      <rect>
       <x>450</x>
-      <y>30</y>
+      <y>40</y>
       <width>300</width>
       <height>200</height>
      </rect>
@@ -474,19 +474,6 @@
      <pixmap resource="images.qrc">:/pics/images/arrowDown.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="testlabel">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>410</y>
-      <width>451</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
@@ -566,7 +553,7 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>30</y>
+      <y>40</y>
       <width>261</width>
       <height>201</height>
      </rect>
@@ -717,6 +704,66 @@
      </palette>
     </property>
    </widget>
+   <widget class="QLabel" name="hhplabel">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>0</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Happy Hunting Pilgrim!</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>370</y>
+      <width>37</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="killscountlabel">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kills:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="killdisplay">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <zorder>layoutWidget</zorder>
    <zorder>UpLabel</zorder>
    <zorder>RightLabel</zorder>
@@ -728,8 +775,10 @@
    <zorder>DownArrow</zorder>
    <zorder>LeftArrow</zorder>
    <zorder>RightArrow</zorder>
-   <zorder>testlabel</zorder>
+   <zorder>killscountlabel</zorder>
    <zorder>description</zorder>
+   <zorder>hhplabel</zorder>
+   <zorder>killdisplay</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -740,14 +789,6 @@
      <height>21</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
